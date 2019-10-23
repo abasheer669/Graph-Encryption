@@ -1,11 +1,18 @@
+
 # A Python program for Prim's Minimum Spanning Tree (MST) algorithm. 
 # The program is for adjacency matrix representation of the graph 
+import numpy as np
+#import sys 
+a=np.zeros([V,V])
 
-import sys 
-def printMST(V,parent,graph): 
-	print ("Edge \tWeight")
+def printMST(V,parent,graph):
+	
+	print (a)
+
 	for i in range(1, V): 
-		print (parent[i], "-", i, "\t", graph[i][ parent[i] ]) 
+		#print (parent[i], "-", i, "\t", graph[i][ parent[i] ])
+		a[parent[i]][i]= graph[i][parent[i]]
+      
         
 def minKey(V, key, mstSet):  
 	min = 10000 
@@ -17,18 +24,18 @@ def minKey(V, key, mstSet):
 
 def primMST(V): 
     key = [10000]*V 
-	 parent = [None]*V 
-	 key[0] = -10
-	 mstSet = [False] *V 
+    parent = [None]*V 
+    key[0] = -10
+    mstSet = [False] *V 
     parent[0] = -1 
     for cout in range(V): 
-		u = minKey(V,key, mstSet)  
-		mstSet[u] = True
-		for v in range(V): 
-			if  graph[u][v] > -10 and mstSet[v] == False and key[v] > graph[u][v]: 
-				key[v] = graph[u][v] 
-				parent[v] = u
-    printMST(v,parent,sgraph)
+        u = minKey(V,key, mstSet)  
+        mstSet[u] = True
+        for v in range(V): 
+            if  graph[u][v] > -10 and mstSet[v] == False and key[v] > graph[u][v]: 
+                key[v] = graph[u][v] 
+                parent[v] = u
+    printMST(v,parent,graph)
 graph = [ [-10, -2, -10, 6, -10], 
 			[-2, -10, -3, 8, 5], 
 			[-10, -3, -10, -10, 7], 
@@ -36,4 +43,3 @@ graph = [ [-10, -2, -10, 6, -10],
 			[-10, 5, 7, 9, -10]] 
 V=len(graph)
 primMST(V); 
-
