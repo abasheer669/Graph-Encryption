@@ -3,16 +3,15 @@
 # The program is for adjacency matrix representation of the graph 
 import numpy as np
 #import sys 
-a=np.zeros([V,V])
-
 def printMST(V,parent,graph):
-	
-	print (a)
+	M2=np.zeros([V,V])
+    print(M2)
+	print ("Edge \tWeight")
 
 	for i in range(1, V): 
-		#print (parent[i], "-", i, "\t", graph[i][ parent[i] ])
-		a[parent[i]][i]= graph[i][parent[i]]
-      
+		print (parent[i], "-", i, "\t", graph[i][ parent[i] ])
+		a[parent[i],i]= graph[i][ parent[i] ]
+    
         
 def minKey(V, key, mstSet):  
 	min = 10000 
@@ -42,4 +41,12 @@ graph = [ [-10, -2, -10, 6, -10],
 			[6, 8, -10, -10, 9], 
 			[-10, 5, 7, 9, -10]] 
 V=len(graph)
-primMST(V); 
+primMST(V) 
+print(M2)
+#adding order to M2
+# H-1 E-2 L-3 L-4 O-5
+for i in range(V):
+	M2[i][i]=i
+M3=M1*M2		#M1 if f
+# c= M3*K # what is the key
+# transmit it as an array
